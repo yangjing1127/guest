@@ -29,7 +29,7 @@ def add_event(request):
                                  start_time=start_time)
         except ValidationError as  e:
             error = 'start_time formaterror.It must be in YYYY-MM-DD HH:MM:SS format.'
-            return JsonResponse({'stauts': 10024, 'message': error})
+            return JsonResponse({'status': 10024, 'message': error})
         return JsonResponse({'status': 200, 'message': 'add event success'})
 
 
@@ -38,7 +38,7 @@ def get_event_list(request):
     eid = request.POST.get('eid', '')
     name = request.POST.get('name', '')
     if eid == '' and name == '':
-        return JsonResponse({'stauts': 10021, 'message': 'parameter error'})
+        return JsonResponse({'status': 10021, 'message': 'parameter error'})
     if eid != '':
         event = {}
         try:
@@ -80,7 +80,7 @@ def add_guest(request):
 
     result = Event.objects.filter(id=eid)
     if not result:
-        return JsonResponse({'stauts': 10022, 'messsage': 'event id  null'})
+        return JsonResponse({'status': 10022, 'messsage': 'event id  null'})
     result = Event.objects.get(id=eid).status
     if not result:
         return JsonResponse({'status': 10023, 'message': 'event status is not avaliable'})
