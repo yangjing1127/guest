@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Page</title>
+</head>
+<body>
+<h1>Hello Django</h1>
+<h2>发布会管理</h2>
+{% comment %}<form method="get">
+<input name="username" type="text" placeholder="username"><br>
+<input name="password" type="password" placeholder="password"><br>
+<button name="btn" type="submit" >登录Get</button><br>
+</form>{% endcomment %}
+<form method="post" action="/login_action/"> {% csrf_token %}
+    <input name="username" type="text" placeholder="username"><br>
+    <input name="password" type="password" placeholder="password"><br>
+    <button name="btn" type="submit">登录Post</button>
+
+    <br>
+    {{ error }}
+</form>
+</body>
+</html>
